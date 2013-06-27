@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:body>
+	<ui:composition template="/template/common/layout.xhtml">
+		<ui:define name="content">
+		<h:form>
+			
+			<h:messages styleClass=""/>
+				<h:dataTable value="#{filmeMB.filmes}" var="item" styleClass="table table-striped">
+				
+					<h:column id="id">
+						<f:facet name="header"> ID </f:facet>
+						<h:outputText value="#{item.id}" />
+					</h:column>
+					
+					<h:column id="nome">
+						<f:facet name="header"> Nome </f:facet>
+						<h:outputText value="#{item.nome}" />
+					</h:column>
+					
+					<h:column id="dataAssistido">
+						<f:facet name="header"> Data que assistiu </f:facet>
+						<h:outputText value="#{item.data}" />
+					</h:column>
+					
+					<h:column id="nota">
+						<f:facet name="header"> Nota </f:facet>
+						<h:outputText value="#{item.nota}" />
+					</h:column>
+					
+					<h:column id="oscar">
+						<f:facet name="header"> Oscar </f:facet>
+						<h:outputText value="#{item.oscar == true ? 'Sim' : 'Não'}" />
+					</h:column>
+					
+					<h:column id="lancamento">
+						<f:facet name="header"> Ano de Lançamento </f:facet>
+						<h:outputText value="#{item.anoLancamento}" />
+					</h:column>
+					
+					<h:column id="diretor">
+						<f:facet name="header"> Diretor </f:facet>
+						<h:outputText value="#{item.diretor.nome}" />
+					</h:column>
+					
+					<h:column>
+						<h:commandLink action="#{filmeMB.show}" value="Visualizar">
+						<f:setPropertyActionListener value="#{item}"
+								target="#{filmeMB.filme}" />
+						</h:commandLink>
+					</h:column>
+					
+					<h:column>
+						<h:commandLink action="#{filmeMB.edit}" value="Editar">
+						<f:setPropertyActionListener value="#{item}"
+								target="#{filmeMB.filme}" />
+						</h:commandLink>
+					</h:column>
+					
+					<h:column>
+						<h:commandLink onclick="return confirm('Tem certeza que deseja excluir ?');" 
+						action="#{filmeMB.delete}" value="Deletar" styleClass="btn btn-danger">
+						<f:setPropertyActionListener value="#{item}"
+								target="#{filmeMB.filme}" />
+						</h:commandLink>
+					</h:column>
+				</h:dataTable>
+				</h:form>
+			<h:form>
+				<h:commandLink value="Novo filme" action="#{filmeMB.novo}" styleClass="btn btn-success"/>
+			</h:form>
+</ui:define>
+</ui:composition>
+</h:body>
+
+</html>

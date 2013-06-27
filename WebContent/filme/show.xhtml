@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:body>
+	<ui:composition template="/template/common/layout.xhtml">
+		<ui:define name="content">
+		
+		Nome:
+		<h:outputText value="#{filmeMB.filme.nome}" />
+		
+		<br />
+		
+		Data que assistiu:
+		<h:outputText value="#{filmeMB.filme.dataAssistido}" />
+		
+		<br />
+		
+		Nota:
+		<h:outputText value="#{filmeMB.filme.nota}" />
+		
+		<br />
+		
+		Oscar:
+		<h:outputText value="#{filmeMB.filme.oscar == true ? 'Sim' : 'Não'}" />
+		
+		<br />
+		
+		Ano de lançamento:
+		<h:outputText value="#{filmeMB.filme.anoLancamento}"/>
+		
+		<br />
+		
+		Diretor:
+		<h:outputText value="#{filmeMB.filme.diretor.nome}" />
+	
+	<h:form>
+		<h:commandLink value="Voltar" action="#{filmeMB.index}" />
+	</h:form>
+	</ui:define>
+</ui:composition>
+</h:body>
+</html>

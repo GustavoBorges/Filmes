@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:body>
+<ui:composition template="/template/common/layout.xhtml">
+		<ui:define name="content">
+	
+	<h:form id="form" styleClass="form-horizontal">
+	
+		<h:messages styleClass="alert alert-error"/>
+		
+		<div class="control-group">
+			<h:outputLabel for="nome" value="Nome:" styleClass="control-label" />
+			<div class="controls">
+				<h:inputText id="nome" required="true" value="#{filmeMB.filme.nome}" >
+					<f:validateLength maximum="50" />
+				</h:inputText>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<h:outputLabel for="dataAssistido" value="Data que foi assistido: "  styleClass="control-label"/>
+			<div class="controls">
+				<h:inputText id="dataAssistido" required="true" value="#{filmeMB.filme.dataAssistido}">
+					<f:convertDateTime pattern="dd/mm/yyyy"/>
+				</h:inputText>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<h:outputLabel for="nota" value="Nota: " styleClass="control-label"/>
+			<div class="controls">	
+				<h:selectOneMenu id="nota" value="#{filmeMB.filme.nota}" styleClass="span1">
+					<f:selectItem itemValue="1" itemLabel="1"/>
+					<f:selectItem itemValue="2" itemLabel="2"/>
+					<f:selectItem itemValue="3" itemLabel="3"/>
+					<f:selectItem itemValue="4" itemLabel="4"/>
+					<f:selectItem itemValue="5" itemLabel="5"/>
+					<f:selectItem itemValue="6" itemLabel="6"/>
+					<f:selectItem itemValue="7" itemLabel="7"/>
+					<f:selectItem itemValue="8" itemLabel="8"/>
+					<f:selectItem itemValue="9" itemLabel="9"/>
+					<f:selectItem itemValue="10" itemLabel="10"/>
+				</h:selectOneMenu>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<h:outputLabel for="oscar" value="Oscar: "  styleClass="control-label"/>
+			<div class="controls">
+				<h:selectBooleanCheckbox id="oscar" value="#{filmeMB.filme.oscar}"/>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<h:outputLabel for="anoLancamento" value="Ano de Lançamento: " styleClass="control-label"/>
+			<div class="controls">
+				<h:inputText id="anoLancamento" value="#{filmeMB.filme.anoLancamento}">
+					<f:validateLength maximum="4" />
+				</h:inputText>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<h:outputLabel for="diretor" value="Nome do Diretor: " styleClass="control-label"/>
+			<div class="controls">
+				<h:inputText id="diretor" required="true" value="#{filmeMB.filme.diretor.nome}">
+					<f:validateLength maximum="50" />
+				</h:inputText>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<div class="controls">
+				<h:commandLink value="Salvar" action="#{filmeMB.criar}" styleClass="btn btn-success"/>
+			</div>
+		</div>
+	</h:form>
+	<h:form>
+		<h:commandLink value="Voltar" action="#{filmeMB.index}"/>
+	</h:form>
+	</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>
