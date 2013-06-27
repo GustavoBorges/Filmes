@@ -16,7 +16,9 @@
 		<br />
 		
 		Data que assistiu:
-		<h:outputText value="#{filmeMB.filme.dataAssistido}" />
+		<h:outputText value="#{filmeMB.filme.dataAssistido}">
+			<f:convertDateTime pattern="dd/MM/yyyy"/>
+		</h:outputText>
 		
 		<br />
 		

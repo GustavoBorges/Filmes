@@ -26,15 +26,19 @@
 			<h:outputLabel for="dataAssistido" value="Data que foi assistido: "  styleClass="control-label"/>
 			<div class="controls">
 				<h:inputText id="dataAssistido" required="true" value="#{filmeMB.filme.dataAssistido}">
-					<f:convertDateTime pattern="dd/mm/yyyy"/>
+					<f:convertDateTime pattern="dd/MM/yyyy"/>
 				</h:inputText>
+				<p>
+					<small> <h:outputText value="Ex. 01/01/2001"/> </small>
+				</p>
 			</div>
 		</div>
 		
 		<div class="control-group">
-			<h:outputLabel for="nota" value="Nota: " styleClass="control-label"/>
+			<h:outputLabel for="nota" value="Nota:" styleClass="control-label" />
 			<div class="controls">	
 				<h:selectOneMenu id="nota" value="#{filmeMB.filme.nota}" styleClass="span1">
+					<f:selectItem itemValue="0" itemLabel="0"/>
 					<f:selectItem itemValue="1" itemLabel="1"/>
 					<f:selectItem itemValue="2" itemLabel="2"/>
 					<f:selectItem itemValue="3" itemLabel="3"/>
@@ -60,23 +64,27 @@
 			<h:outputLabel for="anoLancamento" value="Ano de Lançamento: " styleClass="control-label"/>
 			<div class="controls">
 				<h:inputText id="anoLancamento" value="#{filmeMB.filme.anoLancamento}">
-					<f:validateLength maximum="4" />
+					<f:validateLength minimum="4" maximum="4" />
 				</h:inputText>
 			</div>
 		</div>
 		
 		<div class="control-group">
-			<h:outputLabel for="diretor" value="Nome do Diretor: " styleClass="control-label"/>
+			<h:outputLabel for="diretor" value="Diretor: " styleClass="control-label"/>
 			<div class="controls">
-				<h:inputText id="diretor" required="true" value="#{filmeMB.filme.diretor.nome}">
-					<f:validateLength maximum="50" />
-				</h:inputText>
+				<h:selectOneMenu required="true" id="diretor" value="#{filmeMB.filme.diretor}">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItems value="#{diretorMB.diretores}" var="item"
+					itemLabel="#{item.nome}" itemValue="#{item}" />
+				</h:selectOneMenu>
 			</div>
 		</div>
 		
 		<div class="control-group">
 			<div class="controls">
-				<h:commandLink value="Salvar" action="#{filmeMB.criar}" styleClass="btn btn-success"/>
+				<h:commandLink value="Salvar" action="#{filmeMB.criar}" styleClass="btn">
+					<i class="icon-ok"></i>
+				</h:commandLink>
 			</div>
 		</div>
 	</h:form>

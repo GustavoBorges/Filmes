@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:body>
+<ui:composition template="/template/common/layout.xhtml">
+		<ui:define name="content">
+	
+	<h:form id="form" styleClass="form-horizontal">
+	
+		<h:messages styleClass="alert alert-error"/>
+		
+		<div class="control-group">
+			<h:outputLabel for="nome"  value="Nome:" styleClass="control-label" />
+			<div class="controls">
+				<h:inputText id="nome" required="true" value="#{diretorMB.diretor.nome}" >
+					<f:validateLength maximum="50" />
+				</h:inputText>
+			</div>
+		</div>
+		
+		<div class="control-group">
+			<div class="controls">
+				<h:commandLink value="Salvar" action="#{diretorMB.criar}" styleClass="btn">
+					<i class="icon-ok"></i>
+				</h:commandLink>
+			</div>
+		</div>
+	</h:form>
+	<h:form>
+		<h:commandLink value="Voltar" action="#{diretorMB.index}"/>
+	</h:form>
+	</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

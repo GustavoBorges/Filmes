@@ -44,8 +44,7 @@ public abstract class GenericDAO<T> {
 		} catch (Exception e) {
 			lista = null;
 		}finally{
-			System.out.println("Aqui!");
-			//this.session.close();
+			this.session.close();
 		}
 
 		return lista;
@@ -87,8 +86,8 @@ public abstract class GenericDAO<T> {
 		ArrayList<T>  lista = new ArrayList<T>();
 		try {
 			this.session = ConnectionFactory.getSession();
-			lista = (ArrayList<T>) session.createCriteria(classe).add(Restrictions.like("nome", nome, MatchMode.ANYWHERE)
-                    ).list();
+			lista = (ArrayList<T>) session.createCriteria(classe).add(Restrictions.like("nome", nome, MatchMode.ANYWHERE).ignoreCase()
+					).list();
 		}finally{
 			this.session.close();
 		}

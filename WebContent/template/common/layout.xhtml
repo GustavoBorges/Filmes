@@ -25,10 +25,16 @@
 				<ui:insert name="header">
 					<ui:include src="/template/common/header.xhtml" />
 				</ui:insert>
+					<!-- Menu -->
+					<div class="row-fluid">
+						<div class="span2">
+							<ui:insert name="menu">
+								<ui:include src="/template/common/menu.xhtml"></ui:include>
+							</ui:insert>
+					</div>
 					
 					<!-- Conteúdo -->
-					<div class="row-fluid">
-						<div class="span12 ">
+						<div class="span10 ">
 							<ui:insert name="content">
 								<ui:include src="/template/common/content.xhtml" />
 							</ui:insert>

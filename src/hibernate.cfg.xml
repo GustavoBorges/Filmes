@@ -17,10 +17,6 @@
 		
 		<mapping class="br.sea.filme.beans.FilmeBean"/>
 		<mapping class="br.sea.filme.beans.DiretorBean"/>
-		
-		<!--  <mapping class="br.ucb.saam.beans.PaginaBean"/> -->
-		
-		
 	</session-factory>
 </hibernate-configuration>
 

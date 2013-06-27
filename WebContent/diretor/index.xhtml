@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:body>
+	<ui:composition template="/template/common/layout.xhtml">
+		<ui:define name="content">
+		
+		<div class="span6">
+			<h4>Diretores</h4>
+		</div>
+		
+		<div class="span6">
+			<h:form styleClass="form-search pull-right">
+				<h:inputText value="#{diretorMB.diretor.nome}" styleClass="input-medium search-query"/>
+				<h:commandLink value="" action="#{diretorMB.buscar}">
+					<i class="icon-search"></i>
+				</h:commandLink>
+			</h:form>
+		</div>
+		
+		<h:form>
+			
+			<h:messages styleClass="alert alert-success"/>
+				<h:dataTable value="#{diretorMB.diretores}" var="item" styleClass="table table-striped table-condensed">
+					
+					<h:column id="nome">
+						<f:facet name="header"> Nome </f:facet>
+						<h:outputText value="#{item.nome}" />
+					</h:column>
+					
+					<h:column>
+						<h:commandLink action="#{diretorMB.edit}" value=" ">
+						<i class="icon-edit"></i>
+						<f:setPropertyActionListener value="#{item}"
+								target="#{diretorMB.diretor}" />
+						</h:commandLink>
+					</h:column>
+					
+					<h:column>
+						<h:commandLink onclick="return confirm('Tem certeza que deseja excluir ?');" 
+						action="#{diretorMB.delete}" value=" ">
+						<i class="icon-remove"></i>
+						<f:setPropertyActionListener value="#{item}"
+								target="#{diretorMB.diretor}" />
+						</h:commandLink>
+					</h:column>
+				</h:dataTable>
+				</h:form>
+			<h:form>
+				<h:commandLink value="Novo diretor" action="#{diretorMB.novo}" styleClass="btn">
+					<i class="icon-plus-sign"></i>
+				</h:commandLink>
+			</h:form>
+</ui:define>
+</ui:composition>
+</h:body>
+
+</html>
